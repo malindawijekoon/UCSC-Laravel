@@ -16,12 +16,21 @@
             {{ session('status') }}
           </div>
           @endif
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+          @endif
           <!-- Apply any bg-* class to to the info-box to color it -->
 
             <div class="row">
                 <div class="well">
 
-                    {!! Form::open(['url' => '/processform', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['route' => 'saveFixedDeposit', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 
                     <fieldset>
 
@@ -37,17 +46,17 @@
 
                         <!-- Tenor -->
                         <div class="form-group">
-                            {!! Form::label('email', 'Tenor:', ['class' => 'col-lg-2 control-label']) !!}
+                            {!! Form::label('Tenor', 'Tenor:', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-10">
-                                {!! Form::email('tenor', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                {!! Form::text('tenor', null, ['class' => 'form-control', 'placeholder' => 'Tenor']) !!}
                             </div>
                         </div>
 
                         <!-- Amount -->
                         <div class="form-group">
-                            {!! Form::label('password', 'Amount:', ['class' => 'col-lg-2 control-label']) !!}
+                            {!! Form::label('Amount', 'Amount:', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-10">
-                                {!! Form::email('amount', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                {!! Form::text('amount', null, ['class' => 'form-control', 'placeholder' => 'Amount']) !!}
                             </div>
                         </div>
 
@@ -55,7 +64,7 @@
                         <div class="form-group">
                             {!! Form::label('password', 'Rate', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-10">
-                                {!! Form::email('rate', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                {!! Form::text('rate', null, ['class' => 'form-control', 'placeholder' => 'Rate']) !!}
                             </div>
                         </div>
 
@@ -63,10 +72,9 @@
                         <div class="form-group">
                             {!! Form::label('password', 'Investment Date', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-10">
-                                {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                                {!! Form::text('date', null, ['class' => 'form-control datepicker', 'placeholder' => 'Investment Date']) !!}
                             </div>
                         </div>
-
 
 
                         <!-- Submit Button -->

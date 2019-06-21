@@ -11,9 +11,9 @@
                     <h3 class="box-title">Investment</h3>
                 </div>
                 <div class="box-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success my-success-msg">
+                            <p>{{ $message }}</p>
                         </div>
                 @endif
                 <!-- Apply any bg-* class to to the info-box to color it -->

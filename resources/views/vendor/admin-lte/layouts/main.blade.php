@@ -51,6 +51,10 @@
   <script src="{{ mix('/js/manifest.js') }}" charset="utf-8"></script>
   <script src="{{ mix('/js/vendor.js') }}" charset="utf-8"></script>
   <script src="{{ mix('/js/admin-lte.js') }}" charset="utf-8"></script>
+  <script src="{{ mix('/js/app.js') }}" charset="utf-8"></script>
+  <script type="text/javascript">
+    var APP_URL = {!! json_encode(url('/')) !!}
+  </script>
   @show
   @stack('body')
 </body>
